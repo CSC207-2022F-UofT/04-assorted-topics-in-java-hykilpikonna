@@ -11,3 +11,19 @@
  */
 
 import java.util.List;
+
+class DrivableTrader extends Trader<Drivable>
+{
+    public DrivableTrader(int money)
+    {
+        super(money);
+    }
+
+    @Override
+    public int getSellingPrice(Drivable obj)
+    {
+        if (!(obj instanceof Tradable)) return Tradable.MISSING_PRICE;
+
+        return super.getSellingPrice(obj) + obj.getMaxSpeed();
+    }
+}
